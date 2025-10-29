@@ -4,9 +4,12 @@ sources:
   - name: gz_raw_date
     description: gz dateset
     tables:
-      - name: raw_gz_product
+      - name: product
         description: product data
-      - name: raw_gz_sales
+        identifier: raw_gz_product
+      - name: sales
         description: sales data
-      - name: raw_gz_ship
+        identifier: raw_gz_sales
+      - name: ship
         description: ship data
+        identifier: raw_gz_ship
