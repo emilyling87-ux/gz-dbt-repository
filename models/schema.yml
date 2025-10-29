@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: gz_raw_date
+    description: gz dateset
+    tables:
+      - name: raw_gz_product
+        description: product data
+      - name: raw_gz_sales
+        description: sales data
+      - name: raw_gz_ship
+        description: ship data
