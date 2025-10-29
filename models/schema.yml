@@ -1,8 +1,9 @@
 version: 2
 
 sources:
-  - name: gz_raw_date
+  - name: raw
     description: gz dateset
+    identifier: gz_raw_date
     tables:
       - name: product
         description: product data
