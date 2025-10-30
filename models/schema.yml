@@ -119,11 +119,11 @@ models:
         tests:
           - not_null
 
-  - name: int_orders_operational
-    description: calculate operational margin per order
+
+  - name: finance_days
+    description: Daily financial kpi for finance team
     columns:
-      - name: orders_id
-        description: orders key
+      - name: total_nb_transactions
         tests:
           - not_null
       - name: date_date
@@ -131,33 +131,33 @@ models:
         tests:
           - not_null
       - name: operational_margin
-        description: Operational_margin = margin + shipping_fee - log_cost - ship_cost
+        description: Operational_margin total
         tests:
           - not_null
-      - name: revenue
+      - name: total_revenue
         description: revenue
         tests:
           - not_null
-      - name: quantity
+      - name: total_quantity
         description: quantity
         tests:
           - not_null
-      - name: purchase_cost
+      - name: total_purchase_cost
         description: sum purchase cost
         tests:
           - not_null
-      - name: margin
-        description: sum margin
-        tests:
-          - not_null
-      - name: shipping_fee
+      - name: total_shipping_fee
         description: income
         tests:
           - not_null
-      - name: logcost
+      - name: total_logcost
         tests:
           - not_null
-      - name: ship_cost
+      - name: total_ship_cost
+        tests:
+          - not_null
+      - name: average_basket
+        description: total revenue/total transactions
         tests:
           - not_null
 
