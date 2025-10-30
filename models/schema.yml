@@ -52,43 +52,48 @@ sources:
         columns:
           - name: date_date
             description: date
-            tests:
-              - not_null
           - name: paid_source
-            tests:
-              - not_null
           - name: campaign_key
-            tests:
-              - not_null
           - name: camPGN_name
-            tests:
-              - not_null
           - name: ads_cost
-            tests:
-              - not_null
           - name: impression
-            tests:
-              - not_null
           - name: click
-            tests:
-              - not_null
+      - name: bing
+        identifier: raw_gz_bing
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+      - name: criteo
+        identifier: raw_gz_criteo
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+      - name: facebook
+        identifier: raw_gz_facebook
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
 
       
-      - name: ship
-        description: ship data
-        identifier: raw_gz_ship
-        columns:
-          - name: orders_id
-            description: order id
-            tests:
-              - unique
-              - not_null
-          - name: shipping_fee
-            description: shipping fee
-          - name: logcost
-            description: logistic fee
-          - name: ship_cost
-            description: cost for shipping
 
             
 
@@ -201,5 +206,124 @@ models:
           - not_null
       - name: average_basket
         description: total revenue/total transactions
+        tests:
+          - not_null
+
+  - name: int_campaigns
+    description: merge adwords,bing,criteo,facebook
+    columns:
+      - name: paid_source
+        tests:
+          - not_null
+      - name: date_date
+        description: date champaign
+        tests:
+          - not_null
+      - name: campaign_key
+        tests:
+          - not_null
+      - name: campaign_name
+        description: campaign_name
+        tests:
+          - not_null
+      - name: impression
+        tests:
+          - not_null
+      - name: click
+        tests:
+          - not_null
+      - name: ads_cost
+        tests:
+          - not_null
+
+  - name: int_campaigns_day
+    description: an aggregated version of int_campaigns model for each day.
+    columns:
+      - name: date_date
+        description: date
+        tests:
+          - not_null
+      - name: impression
+        tests:
+          - not_null
+      - name: click
+        tests:
+          - not_null
+      - name: ads_cost
+        tests:
+          - not_null
+  - name: finance_campaigns_day
+    description: merge finance_days and int_campaigns_days
+    columns:
+      - name: date
+        tests:
+          - not_null
+      - name: ads_margin
+        description: ads_margin = operational_margin - ads_cost
+        tests:
+          - not_null
+      - name: average_basket
+        tests:
+          - not_null
+      - name: ads_impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: revenue
+        tests:
+          - not_null
+      - name: purchase_cost
+        tests:
+          - not_null
+      - name: shipping_fee
+        tests:
+          - not_null
+      - name: log_cost
+        tests:
+          - not_null
+      - name: ship_cost
+        tests:
+          - not_null
+
+  - name: finance_campaigns_month
+    description: aggregate by month
+    columns:
+      - name: datemonth
+        tests:
+          - not_null
+      - name: ads_margin
+        description: ads_margin = operational_margin - ads_cost
+        tests:
+          - not_null
+      - name: average_basket
+        tests:
+          - not_null
+      - name: ads_impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: revenue
+        tests:
+          - not_null
+      - name: purchase_cost
+        tests:
+          - not_null
+      - name: shipping_fee
+        tests:
+          - not_null
+      - name: log_cost
+        tests:
+          - not_null
+      - name: ship_cost
         tests:
           - not_null
