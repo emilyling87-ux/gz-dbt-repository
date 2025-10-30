@@ -1,3 +1,4 @@
+
 select
     date_date,
     count(distinct orders_id) as total_nb_transactions,

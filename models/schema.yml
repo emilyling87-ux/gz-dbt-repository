@@ -28,9 +28,8 @@ sources:
           - name: revenue
             description: sales revenue
           - name: quantity
-            description: quantity  
-         
-          
+            description: quantity
+
       - name: ship
         description: ship data
         identifier: raw_gz_ship
@@ -43,10 +42,9 @@ sources:
           - name: shipping_fee
             description: shipping fee
           - name: logcost
-            description: logistic fee 
+            description: logistic fee
           - name: ship_cost
             description: cost for shipping
-
 
 models:
   - name: stg_gz_raw_date__sales
@@ -119,7 +117,6 @@ models:
         tests:
           - not_null
 
-
   - name: finance_days
     description: Daily financial kpi for finance team
     columns:
@@ -160,9 +157,3 @@ models:
         description: total revenue/total transactions
         tests:
           - not_null
-
-
-
-
-
-  
