@@ -7,9 +7,91 @@ sources:
       - name: product
         description: product data
         identifier: raw_gz_product
+        columns:
+          - name: products_id
+            description: products id
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
+            description: purchase price
       - name: sales
         description: sales data
         identifier: raw_gz_sales
+        columns:
+          - name: date_date
+            description: sales date
+          - name: orders_id
+            description: order id
+          - name: pdt_id
+            description: products id
+          - name: revenue
+            description: sales revenue
+          - name: quantity
+            description: quantity  
+         
+          
       - name: ship
         description: ship data
         identifier: raw_gz_ship
+        columns:
+          - name: orders_id
+            description: order id
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: shipping fee
+          - name: logcost
+            description: logistic fee 
+          - name: ship_cost
+            description: cost for shipping
+
+
+models:
+  - name: stg_gz_raw_date__sales
+    columns:
+      - name: id
+        tests:
+          - unique
+
+  - name: int_sales_margin
+    description: calculate margin per product
+    columns:
+      - name: products_id
+        description: products key
+        tests:
+          - not_null
+      - name: date_date
+        description: date of the order
+        tests:
+          - not_null
+      - name: orders_id
+        description: orders key
+        tests:
+          - not_null
+      - name: purchase_price
+        description: price for purchase
+        tests:
+          - not_null
+      - name: revenue
+        description: sales revenue
+        tests:
+          - not_null
+      - name: quantity
+        description: sales products quantity
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: purchase_price*quantity
+        tests:
+          - not_null
+      - name: margin
+        description: revenue-purchase_cost
+        tests:
+          - not_null
+
+
+
+
+  
