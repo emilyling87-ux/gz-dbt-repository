@@ -6,6 +6,7 @@ purchase_price,
 revenue,
 quantity,
 round(quantity*purchase_price,2) as purchase_cost,
-round((revenue-quantity*purchase_price),2) as margin
+round((revenue-quantity*purchase_price),2) as margin,
+{{margin_percent('revenue','quantity*purchase_price')}} as margin_percent
 from {{ref("merge_product_sales")}}
 
